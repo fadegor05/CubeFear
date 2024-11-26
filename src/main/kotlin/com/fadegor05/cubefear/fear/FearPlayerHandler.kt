@@ -16,6 +16,11 @@ class FearPlayerHandler {
 
         val fearPercentage = getPlayerFearPercentage(fearPlayerData)
         handlePlayerFearForce(player, fearPercentage)
+
+        if (fearPercentage == 100) {
+            player.kill()
+        }
+
         player.sendMessage(Text.literal("${fearPlayerData}"))
     }
 
