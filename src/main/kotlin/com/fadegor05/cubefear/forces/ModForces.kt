@@ -8,7 +8,7 @@ object ModForces {
     private val MONSTER_FORCE = MonsterForce()
     private val ADVANCED_MONSTER_FORCE = AdvancedMonsterForce()
     private val BAD_EFFECT_FORCE = BadEffectForce()
-    private val MOVEMENT_FORCE = MovementForce()
+    private val JUMPSCARE_FORCE = JumpscareForce()
 
     fun performWithChance(chance: Double): Boolean {
         return Random.nextDouble(0.0, 100.0) < chance
@@ -21,10 +21,10 @@ object ModForces {
 
         val forces: MutableList<BaseForce> = mutableListOf()
 
-        if (percentage >= 50) forces.add(MONSTER_FORCE)
+        forces.add(MONSTER_FORCE)
         if (percentage >= 70) forces.add(ADVANCED_MONSTER_FORCE)
         if (percentage >= 80) forces.add(BAD_EFFECT_FORCE)
-        if (percentage >= 90) forces.add(MOVEMENT_FORCE)
+        if (percentage >= 90) forces.add(JUMPSCARE_FORCE)
 
         if (forces.size >= 1) {
             val randomForce = forces.random()

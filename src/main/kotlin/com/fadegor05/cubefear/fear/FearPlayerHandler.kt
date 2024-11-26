@@ -16,6 +16,7 @@ class FearPlayerHandler {
 
         val fearPercentage = getPlayerFearPercentage(fearPlayerData)
         handlePlayerFearForce(player, fearPercentage)
+        player.sendMessage(Text.literal("${fearPlayerData}"))
     }
 
     private fun getPlayerFearPercentage(playerData: FearPlayerData): Int {

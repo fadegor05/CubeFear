@@ -16,8 +16,7 @@ class CubeFear : ModInitializer {
         ModPotions.registerPotions()
 
         FabricBrewingRecipeRegistry.registerPotionRecipe(Potions.AWKWARD, Ingredient.ofItems(Items.COPPER_INGOT), ModPotions.FEAR_SUPPRESSING_POTION)
-
-        val fearCore = FearCore()
+        FearCore()
 
     }
 

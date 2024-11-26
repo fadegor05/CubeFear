@@ -9,6 +9,6 @@ abstract class SoundForce: BaseForce {
 
     override fun forcePlayer(player: ServerPlayerEntity) {
         val randomSound = sounds.random()
-        player.playSound(randomSound, SoundCategory.MASTER, 1.0f, 1.0f)
+        player.playSound(randomSound, SoundCategory.HOSTILE, 1.0f, 1.0f)
     }
 }
