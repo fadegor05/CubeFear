@@ -1,0 +1,30 @@
+{
+  "schemaVersion": 1,
+  "id": "cubefear",
+  "version": "${version}",
+  "name": "CubeFear",
+  "description": "",
+  "authors": [],
+  "contact": {},
+  "license": "All-Rights-Reserved",
+  "icon": "assets/cubefear/icon.png",
+  "environment": "server",
+  "entrypoints": {
+    "main": [
+      "com.fadegor05.cubefear.CubeFear"
+    ]
+  },
+  "mixins": [
+    "cubefear.mixins.json",
+    {
+      "config": "cubefear.client.mixins.json",
+      "environment": "client"
+    }
+  ],
+  "depends": {
+    "fabricloader": ">=${loader_version}",
+    "fabric-language-kotlin": ">=${kotlin_loader_version}",
+    "fabric": "*",
+    "minecraft": "${minecraft_version}"
+  }
+}
