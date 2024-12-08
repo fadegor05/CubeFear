@@ -3,6 +3,7 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
     kotlin("jvm") version "2.0.21"
+    kotlin("plugin.serialization") version "2.0.20"
     id("fabric-loom") version "1.7.1"
     id("maven-publish")
 }
@@ -44,6 +45,8 @@ repositories {
 
 dependencies {
     // To change the versions see the gradle.properties file
+    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.7.3")
+
     minecraft("com.mojang:minecraft:${project.property("minecraft_version")}")
     mappings("net.fabricmc:yarn:${project.property("yarn_mappings")}:v2")
     modImplementation("net.fabricmc:fabric-loader:${project.property("loader_version")}")

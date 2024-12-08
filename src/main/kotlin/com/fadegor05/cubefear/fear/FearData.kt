@@ -1,8 +1,10 @@
 package com.fadegor05.cubefear.fear
 
-object FearData {
-    val playersFearData = mutableMapOf<String, FearPlayerData>()
+import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
 
-    const val safeRadius = 200
-
-}
+@Serializable
+data class FearData(
+    @SerialName("players_fear_data") var playersFearData: MutableMap<String, FearPlayerData> = mutableMapOf(),
+    @SerialName("safe_radius") var safeRadius: Int = 200
+)
