@@ -17,9 +17,8 @@ import kotlin.math.abs
 
 class FearPlayerHandler {
     fun handlePlayerFear(player: ServerPlayerEntity) {
-        val fearPlayerData = FearData.playersFearData.getOrDefault(player.displayName.string, FearPlayerData())
+        val fearPlayerData = FearDataManager.fearData.playersFearData.getOrDefault(player.displayName.string, FearPlayerData())
         handlePlayerFearLevel(player, fearPlayerData)
-        FearData.playersFearData[player.displayName.string] = fearPlayerData
 
         val fearPercentage = getPlayerFearPercentage(fearPlayerData)
         handlePlayerFearForce(player, fearPercentage)
@@ -27,9 +26,11 @@ class FearPlayerHandler {
         if (fearPercentage == 100 && !player.isDead) {
             player.addStatusEffect(StatusEffectInstance(StatusEffects.BLINDNESS, 120))
             player.playSound(SoundEvents.ENTITY_WITCH_AMBIENT, SoundCategory.HOSTILE, 1.0f, 1.0f)
+            fearPlayerData.baseFear += fearPlayerData.fearBuild * 5
             player.kill()
         }
 
+        FearDataManager.fearData.playersFearData[player.displayName.string] = fearPlayerData
         player.sendMessage(Text.literal("${fearPlayerData}"))
     }
 
@@ -61,7 +62,7 @@ class FearPlayerHandler {
         val worldSpawn = world.spawnPos
         val playerPos = blockPos
 
-        return isOverworld && playerPos.isWithinSafeRadius(worldSpawn, FearData.safeRadius)
+        return isOverworld && playerPos.isWithinSafeRadius(worldSpawn, FearDataManager.fearData.safeRadius)
     }
 
     private fun BlockPos.isWithinSafeRadius(center: BlockPos, radius: Int): Boolean {
