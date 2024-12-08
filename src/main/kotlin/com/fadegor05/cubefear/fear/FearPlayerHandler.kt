@@ -2,7 +2,14 @@ package com.fadegor05.cubefear.fear
 
 import com.fadegor05.cubefear.effects.ModEffects
 import com.fadegor05.cubefear.forces.ModForces
+import net.minecraft.entity.damage.DamageSource
+import net.minecraft.entity.damage.DamageSources
+import net.minecraft.entity.effect.StatusEffectInstance
+import net.minecraft.entity.effect.StatusEffects
 import net.minecraft.server.network.ServerPlayerEntity
+import net.minecraft.sound.SoundCategory
+import net.minecraft.sound.SoundEvents
+import net.minecraft.text.Style
 import net.minecraft.text.Text
 import net.minecraft.util.Identifier
 import net.minecraft.util.math.BlockPos
@@ -17,7 +24,9 @@ class FearPlayerHandler {
         val fearPercentage = getPlayerFearPercentage(fearPlayerData)
         handlePlayerFearForce(player, fearPercentage)
 
-        if (fearPercentage == 100) {
+        if (fearPercentage == 100 && !player.isDead) {
+            player.addStatusEffect(StatusEffectInstance(StatusEffects.BLINDNESS, 120))
+            player.playSound(SoundEvents.ENTITY_WITCH_AMBIENT, SoundCategory.HOSTILE, 1.0f, 1.0f)
             player.kill()
         }
 
