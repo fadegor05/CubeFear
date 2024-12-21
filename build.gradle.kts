@@ -30,7 +30,6 @@ loom {
     mods {
         register("cubefear") {
             sourceSet("main")
-            sourceSet("client")
         }
     }
 }

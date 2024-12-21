@@ -8,18 +8,17 @@
   "contact": {},
   "license": "All-Rights-Reserved",
   "icon": "assets/cubefear/icon.png",
-  "environment": "server",
+  "environment": "*",
   "entrypoints": {
+    "client": [
+      "com.fadegor05.cubefear.client.CubeFearClient"
+    ],
     "main": [
       "com.fadegor05.cubefear.CubeFear"
     ]
   },
   "mixins": [
-    "cubefear.mixins.json",
-    {
-      "config": "cubefear.client.mixins.json",
-      "environment": "client"
-    }
+    "cubefear.mixins.json"
   ],
   "depends": {
     "fabricloader": ">=${loader_version}",

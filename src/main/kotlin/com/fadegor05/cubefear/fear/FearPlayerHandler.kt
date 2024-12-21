@@ -31,7 +31,7 @@ class FearPlayerHandler {
         }
 
         FearDataManager.fearData.playersFearData[player.displayName.string] = fearPlayerData
-        player.sendMessage(Text.literal("${fearPlayerData}"))
+        //player.sendMessage(Text.literal("${fearPlayerData}"))
     }
 
     private fun getPlayerFearPercentage(playerData: FearPlayerData): Int {
@@ -43,13 +43,13 @@ class FearPlayerHandler {
     }
 
     private fun handlePlayerFearLevel(player: ServerPlayerEntity, playerData: FearPlayerData) {
-        val hasFearSuppression = player.hasStatusEffect(ModEffects.FEAR_SUPPRESSION)
+        val hasSuppression = player.hasStatusEffect(ModEffects.FEAR_SUPPRESSION) || player.hasStatusEffect(ModEffects.FEAR_CURE)
 
         var newFearLevel = playerData.fearLevel
         if (player.isInSafe()) {
             newFearLevel = maxOf(playerData.fearLevel - playerData.fearBuild, playerData.baseFear)
         } else{
-            if (!hasFearSuppression) {
+            if (!hasSuppression) {
                 newFearLevel = minOf(playerData.fearLevel + playerData.fearDecay, playerData.maxFear)
             }
         }

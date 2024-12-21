@@ -1,0 +1,7 @@
+{
+  "effect.cubefear.fear_suppression": "Смелость",
+  "effect.cubefear.fear_cure": "Отвага",
+
+  "item.minecraft.potion.effect.fear_supressing": "Зелье смелости",
+  "item.minecraft.potion.effect.fear_cure": "Зелье отваги"
+}

@@ -1,0 +1,7 @@
+{
+  "effect.cubefear.fear_suppression": "Courage",
+  "effect.cubefear.fear_cure": "Valor",
+
+  "item.minecraft.potion.effect.fear_supressing": "Potion of Courage",
+  "item.minecraft.potion.effect.fear_cure": "Potion of Valor"
+}
